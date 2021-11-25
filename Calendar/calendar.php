@@ -21,15 +21,15 @@
 // your code here...
 
 
-// Проверяваме дали има зададени стойности за година и месец, ако няма даваме такива по подразбиране
-if(!isset($_GET['m']) && !isset($_GET['y'])){
-    $_GET['m'] = date('m');
-    $_GET['y'] = date('Y');
-} 
+//  - BAD PRACTICE  - Проверяваме дали има зададени стойности за година и месец, ако няма даваме такива по подразбиране
+//if(!isset($_GET['m']) && !isset($_GET['y'])){
+//    $_GET['m'] = date('m');
+//    $_GET['y'] = date('Y');
+//} 
 
-// Създаваме променливи за месец и година с които ще работим за календара
-$month =  $_GET['m'];
-$year =  $_GET['y'];
+// Създаваме променливи за месец и година с които ще работим за календара и им задаваме стойности по подразбиране
+$month =  $_GET['m'] ?? date('m');
+$year =  $_GET['y'] ?? date('Y');
 
 // Създаваме променлива за текущата дата
 $date = date('F, Y',mktime(0,0,0, $month , 1, $year));
@@ -89,18 +89,18 @@ if ($month == 12){
               <label class="form-label" for="month">Select month</label>
               <select name="m" class="form-control" id="month">
                   <!-- PHP код, с който избраната опция остава постоянна на екрана -->
-                <option  value="1" <?php if($_GET['m'] == '1') {echo "selected=selected"; }?>>January</option>
-                <option  value="2" <?php if($_GET['m'] == '2') {echo "selected=selected"; }?>>February</option>
-                <option  value="3" <?php if($_GET['m'] == '3') {echo "selected=selected"; }?>>March</option>
-                <option  value="4" <?php if($_GET['m']== '4') {echo "selected=selected"; }?>>April</option>
-                <option  value="5" <?php if($_GET['m'] == '5') {echo "selected=selected"; }?>>May</option>
-                <option  value="6" <?php if($_GET['m'] == '6') {echo "selected=selected"; }?>>June</option>
-                <option  value="7" <?php if($_GET['m'] == '7') {echo "selected=selected"; }?>>July</option>
-                <option  value="8" <?php if($_GET['m'] == '8') {echo "selected=selected"; }?>>August</option>
-                <option  value="9" <?php if($_GET['m'] == '9') {echo "selected=selected"; }?>>September</option>
-                <option  value="10" <?php if($_GET['m'] == '10') {echo "selected=selected"; }?>>October</option>
-                <option  value="11" <?php if($_GET['m'] == '11') {echo "selected=selected"; }?>>November</option>
-                <option  value="12" <?php if($_GET['m'] == '12') {echo "selected=selected"; }?>>December</option>
+                <option  value="1" <?php if($month == '1') {echo "selected=selected"; }?>>January</option>
+                <option  value="2" <?php if($month == '2') {echo "selected=selected"; }?>>February</option>
+                <option  value="3" <?php if($month == '3') {echo "selected=selected"; }?>>March</option>
+                <option  value="4" <?php if($month == '4') {echo "selected=selected"; }?>>April</option>
+                <option  value="5" <?php if($month == '5') {echo "selected=selected"; }?>>May</option>
+                <option  value="6" <?php if($month == '6') {echo "selected=selected"; }?>>June</option>
+                <option  value="7" <?php if($month == '7') {echo "selected=selected"; }?>>July</option>
+                <option  value="8" <?php if($month == '8') {echo "selected=selected"; }?>>August</option>
+                <option  value="9" <?php if($month == '9') {echo "selected=selected"; }?>>September</option>
+                <option  value="10" <?php if($month == '10') {echo "selected=selected"; }?>>October</option>
+                <option  value="11" <?php if($month == '11') {echo "selected=selected"; }?>>November</option>
+                <option  value="12" <?php if($month == '12') {echo "selected=selected"; }?>>December</option>
               </select>
             </div>
             <div class="col-md-6 col-lg-6">
